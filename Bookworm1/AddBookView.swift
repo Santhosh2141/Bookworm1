@@ -14,7 +14,7 @@ struct AddBookView: View {
     @State private var review = ""
     @State private var genre = ""
     @State private var rating = 3
-    
+    @State private var date = Date.now
     @Environment(\.dismiss) var dismiss
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
     var body: some View {
@@ -52,7 +52,9 @@ struct AddBookView: View {
                         newBook.genre = genre
                         newBook.rating = Int16(rating)
                         newBook.review = review
+                        newBook.dateAdded = date
                         
+                        print(newBook.dateAdded!)
                         try? moc.save()
                         dismiss()
                     }
