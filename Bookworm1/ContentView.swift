@@ -10,7 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     // storing it here so that it can be used later
-    @FetchRequest(sortDescriptors: []) var books: FetchedResults<Book>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.title),
+//        SortDescriptor(\.title, order: .reverse)
+        SortDescriptor(\.author)
+    ]) var books: FetchedResults<Book>
     
     @State private var showingAddScreen = false
     var body: some View {
@@ -31,11 +35,17 @@ struct ContentView: View {
                             }
                         }
                     }
-                    
+                    .listRowBackground(Int(book.rating) == 1 ? Color.red : .white)
+                    .foregroundColor(Int(book.rating) == 1 ? Color.white : .secondary)
                 }
+                .onDelete(perform: deleteBook)
+                .listStyle(.plain)
             }
             .navigationTitle("BookWorm")
             .toolbar{
+                ToolbarItem(placement: .navigationBarLeading){
+                    EditButton()
+                }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button{
                         showingAddScreen.toggle()
@@ -49,6 +59,14 @@ struct ContentView: View {
             }
         }
         
+    }
+    
+    func deleteBook(for offsets: IndexSet){
+        for offset in offsets{
+            let book = books[offset]
+            moc.delete(book)
+        }
+        try? moc.save()
     }
 }
 

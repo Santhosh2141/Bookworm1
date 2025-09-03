@@ -66,12 +66,12 @@
 				7FEC04C72E6741FA00695CA3 /* Bookworm1App.swift */,
 				7F6610C12E674759006FB4C5 /* DataController.swift */,
 				7FEC04C92E6741FA00695CA3 /* ContentView.swift */,
+				7FC0D6662E68B38000CEFB7C /* DetailView.swift */,
 				7FC0D6642E688D6C00CEFB7C /* EmojiRatingView.swift */,
 				7F8A1FE92E68805500558303 /* RatingView.swift */,
 				7F6610BF2E674718006FB4C5 /* AddBookView.swift */,
 				7FF9619C2E6742C80084F94E /* Bookworm.xcdatamodeld */,
 				7FEC04CB2E6741FC00695CA3 /* Assets.xcassets */,
-				7FC0D6662E68B38000CEFB7C /* DetailView.swift */,
 				7FEC04CD2E6741FC00695CA3 /* Preview Content */,
 			);
 			path = Bookworm1;
